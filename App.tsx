@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { HomeScreen } from "./components/home/Home";
+import { ProfileScreen } from "./components/profile/Profile";
+import PizzaTranslator from "./components/pizza-translator/PizzaTranslator";
+import ScrollViewComponent from "./components/scroll-view/ScrollViewComponent";
+import FlatListBasics from "./components/using-list-view/FlatListBasics";
+import SectionListBasics from "./components/using-list-view/SectionListBasics";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Welcome" }}
+        />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="PizzaTranslator" component={PizzaTranslator} />
+        <Stack.Screen
+          name="ScrollViewComponent"
+          component={ScrollViewComponent}
+        />
+
+        <Stack.Screen name="FlatListBasics" component={FlatListBasics} />
+        <Stack.Screen name="SectionListBasics" component={SectionListBasics} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
