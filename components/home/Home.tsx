@@ -131,6 +131,16 @@ export const HomeScreen = ({ navigation }) => {
           title="PercentageDimensionsBasics"
           onPress={() => navigation.navigate("PercentageDimensionsBasics")}
         />
+        <Separator />
+        <Button
+          title="FlexBasicLayout"
+          onPress={() => navigation.navigate("FlexBasicLayout")}
+        />
+        <Separator />
+        <Button
+          title="FlexDirectionsLayout"
+          onPress={() => navigation.navigate("FlexDirectionsLayout")}
+        />
       </View>
       <Separator />
     </ScrollView>

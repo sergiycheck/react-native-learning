@@ -11,6 +11,8 @@ import LotsOfStyles from "./components/design/style/LotsOfStyles";
 import FixedDimensionsBasics from "./components/design/height-width/FixedDimensionsBasics";
 import FlexDimensionsBasicsFlex from "./components/design/height-width/FixedDimensionsBasicsFlex";
 import PercentageDimensionsBasics from "./components/design/height-width/PercentageDimensionsBasics";
+import FlexBasicLayout from "./components/design/layout-flexbox/BasicLayoutFlexbox";
+import FlexDirectionsLayout from "./components/design/layout-flexbox/FlexDirectionsLayout";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +46,11 @@ export default function App() {
         <Stack.Screen
           name="PercentageDimensionsBasics"
           component={PercentageDimensionsBasics}
+        />
+        <Stack.Screen name="FlexBasicLayout" component={FlexBasicLayout} />
+        <Stack.Screen
+          name="FlexDirectionsLayout"
+          component={FlexDirectionsLayout}
         />
       </Stack.Navigator>
     </NavigationContainer>
