@@ -7,6 +7,10 @@ import PizzaTranslator from "./components/pizza-translator/PizzaTranslator";
 import ScrollViewComponent from "./components/scroll-view/ScrollViewComponent";
 import FlatListBasics from "./components/using-list-view/FlatListBasics";
 import SectionListBasics from "./components/using-list-view/SectionListBasics";
+import LotsOfStyles from "./components/design/style/LotsOfStyles";
+import FixedDimensionsBasics from "./components/design/height-width/FixedDimensionsBasics";
+import FlexDimensionsBasicsFlex from "./components/design/height-width/FixedDimensionsBasicsFlex";
+import PercentageDimensionsBasics from "./components/design/height-width/PercentageDimensionsBasics";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +32,19 @@ export default function App() {
 
         <Stack.Screen name="FlatListBasics" component={FlatListBasics} />
         <Stack.Screen name="SectionListBasics" component={SectionListBasics} />
+        <Stack.Screen name="LotsOfStyles" component={LotsOfStyles} />
+        <Stack.Screen
+          name="FixedDimensionsBasics"
+          component={FixedDimensionsBasics}
+        />
+        <Stack.Screen
+          name="FlexDimensionsBasicsFlex"
+          component={FlexDimensionsBasicsFlex}
+        />
+        <Stack.Screen
+          name="PercentageDimensionsBasics"
+          component={PercentageDimensionsBasics}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

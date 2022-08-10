@@ -110,7 +110,29 @@ export const HomeScreen = ({ navigation }) => {
           title="SectionListBasics"
           onPress={() => navigation.navigate("SectionListBasics")}
         />
+
+        <Separator />
+        <Button
+          title="LotsOfStyles"
+          onPress={() => navigation.navigate("LotsOfStyles")}
+        />
+        <Separator />
+        <Button
+          title="FixedDimensionsBasics"
+          onPress={() => navigation.navigate("FixedDimensionsBasics")}
+        />
+        <Separator />
+        <Button
+          title="FlexDimensionsBasicsFlex"
+          onPress={() => navigation.navigate("FlexDimensionsBasicsFlex")}
+        />
+        <Separator />
+        <Button
+          title="PercentageDimensionsBasics"
+          onPress={() => navigation.navigate("PercentageDimensionsBasics")}
+        />
       </View>
+      <Separator />
     </ScrollView>
   );
 };
