@@ -13,3 +13,5 @@ web-build/
 # macOS
 .DS_Store
 expo-auth-google-auth-key.json
+client_secret_android-expo-learning.json
+client_secret_web-client.apps.googleusercontent.com.json
