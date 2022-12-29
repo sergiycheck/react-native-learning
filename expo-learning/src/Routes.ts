@@ -3,4 +3,5 @@ export const Routes = {
   Details: "Details",
   Posts: "Posts",
   CreatePost: "CreatePost",
+  GoogleAuthentication: "GoogleAuthentication",
 };
