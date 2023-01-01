@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { GoogleAuthentication } from './src/components/authentication/google/GoogleAuth';
 import { DetailsScreen } from './src/components/Details';
 import { HomeScreen } from './src/components/Home';
