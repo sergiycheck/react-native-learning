@@ -64,4 +64,4 @@ buck-out/
 /vendor/bundle/
 logs.md
 google-services.json
-
+GoogleService-Info.plist
