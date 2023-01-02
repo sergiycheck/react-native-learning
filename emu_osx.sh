@@ -5,6 +5,8 @@
 
 
 docker run -it \
+    -e RAM=8 \
+    -e CORES=2 \
     --device /dev/kvm \
     -p 50922:10022 \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
