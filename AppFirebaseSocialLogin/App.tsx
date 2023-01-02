@@ -80,6 +80,7 @@ const App = () => {
           }}>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.tsx</Text> very fast change
+            1
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
