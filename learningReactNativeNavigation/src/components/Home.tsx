@@ -32,11 +32,20 @@ export const Home = ({navigation}: any) => {
         <View
           style={{
             backgroundColor: textColor.backgroundColor,
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
           }}>
           <Text>some text</Text>
           <Button
             title="other"
             onPress={() => navigation.navigate(routes.other)}
+          />
+          <Button
+            title="profile"
+            onPress={() =>
+              navigation.navigate(routes.profile, {name: 'some name'})
+            }
           />
         </View>
       </ScrollView>
