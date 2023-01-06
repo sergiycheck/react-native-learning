@@ -8,6 +8,7 @@ import {ProfileScreen} from './src/components/ProfileScreen';
 import {LogoTitle} from './src/components/shared/Logotitle';
 import {Button} from 'react-native';
 import {HomeScreenUpdateCount} from './src/components/HomeUpdateCount';
+import {HomeWithInnerTabs} from './src/components/HomeWithInnerNavigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -62,6 +63,12 @@ const App = () => {
           options={({route}: {route: any}) => ({
             title: route?.params?.name,
           })}
+        />
+
+        <Stack.Screen
+          name={routes.HomeWithInnerTabs}
+          component={HomeWithInnerTabs}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

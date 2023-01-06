@@ -1,14 +1,15 @@
 import React from 'react';
-import {
-  Button,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  View,
-} from 'react-native';
 import {useColorScheme} from 'react-native';
 import {routes} from '../routes';
+import {
+  StyleSheet,
+  Button,
+  View,
+  SafeAreaView,
+  Text,
+  ScrollView,
+  StatusBar,
+} from 'react-native';
 
 export const Home = ({navigation}: any) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -37,22 +38,40 @@ export const Home = ({navigation}: any) => {
             justifyContent: 'center',
           }}>
           <Text>some text</Text>
+          <Separator />
           <Button
             title="other"
             onPress={() => navigation.navigate(routes.other)}
           />
+          <Separator />
           <Button
             title="profile"
             onPress={() =>
               navigation.navigate(routes.profile, {name: 'some name'})
             }
           />
+          <Separator />
           <Button
             title="home with count"
             onPress={() => navigation.navigate(routes.homeWithCount)}
+          />
+          <Separator />
+          <Button
+            title="home with innerTabs"
+            onPress={() => navigation.navigate(routes.HomeWithInnerTabs)}
           />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
+
+const Separator = () => <View style={styles.separator} />;
+
+const styles = StyleSheet.create({
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+});
