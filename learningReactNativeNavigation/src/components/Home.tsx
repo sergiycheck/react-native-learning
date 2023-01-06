@@ -47,6 +47,10 @@ export const Home = ({navigation}: any) => {
               navigation.navigate(routes.profile, {name: 'some name'})
             }
           />
+          <Button
+            title="home with count"
+            onPress={() => navigation.navigate(routes.homeWithCount)}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

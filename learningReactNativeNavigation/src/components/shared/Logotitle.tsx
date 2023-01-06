@@ -4,7 +4,6 @@ import {Image} from 'react-native';
 export function LogoTitle(props: any) {
   return (
     <Image
-      {...props}
       style={{width: 50, height: 50}}
       // source={require('@expo/snack-static/react-native-logo.png')}
       source={{

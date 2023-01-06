@@ -6,6 +6,8 @@ import {Home} from './src/components/Home';
 import {Other} from './src/components/Other';
 import {ProfileScreen} from './src/components/ProfileScreen';
 import {LogoTitle} from './src/components/shared/Logotitle';
+import {Button} from 'react-native';
+import {HomeScreenUpdateCount} from './src/components/HomeUpdateCount';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,8 +31,26 @@ const App = () => {
           options={{
             title: 'Overview',
             headerTitle: props => <LogoTitle {...props} />,
+            headerRight: () => (
+              <Button
+                onPress={() => console.log('this is a button')}
+                title="Info"
+                color="#f194ff"
+              />
+            ),
           }}
         />
+
+        <Stack.Screen
+          name={routes.homeWithCount}
+          component={HomeScreenUpdateCount}
+          options={() => ({
+            headerTitle: props => <LogoTitle {...props} />,
+            // Add a placeholder button without the `onPress` to avoid flicker
+            headerRight: () => <Button title="Update count" />,
+          })}
+        />
+
         <Stack.Screen
           name={routes.other}
           component={Other}
