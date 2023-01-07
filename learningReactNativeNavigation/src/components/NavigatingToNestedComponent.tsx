@@ -1,8 +1,16 @@
 import React from 'react';
 
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {
+  Button,
+  Linking,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Separator} from './shared/Separator';
 
 export const RoutesNested = {
   root_nested: {
@@ -61,6 +69,25 @@ function FeedNestedScreen({navigation}: any) {
         title="Go back to first screen in stack"
         onPress={() => navigation.popToTop()}
       />
+      <Separator />
+      <Button
+        title="Root nested Profile"
+        onPress={() =>
+          navigation.navigate(RoutesNested.root_nested.name, {
+            screen: RoutesNested.root_nested.nested_screens.profile_nested,
+          })
+        }
+      />
+      <Separator />
+      <Button
+        title="Root nested Settings"
+        onPress={() =>
+          navigation.navigate(RoutesNested.root_nested.name, {
+            screen: RoutesNested.root_nested.nested_screens.settings_nested,
+            initial: false,
+          })
+        }
+      />
     </View>
   );
 }
@@ -69,9 +96,36 @@ function HomeNestedScreen({navigation}: any) {
   return (
     <View style={styles.centerTextContent}>
       <Text>home nested screen !</Text>
+      <Separator />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          Linking.openURL(
+            'https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/',
+          );
+        }}>
+        <Text>Rect native reanimated</Text>
+      </TouchableOpacity>
+      <Separator />
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          Linking.openURL(
+            'https://docs.swmansion.com/react-native-gesture-handler/docs/installation',
+          );
+        }}>
+        <Text>Rect native gesture handler</Text>
+      </TouchableOpacity>
+      <Separator />
       <Button
         title="Go back to first screen in stack"
         onPress={() => navigation.popToTop()}
+      />
+      <Separator />
+      <Button
+        title="Feed nested"
+        onPress={() => navigation.navigate(RoutesNested.feed_nested)}
       />
     </View>
   );
@@ -98,5 +152,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
   },
 });
