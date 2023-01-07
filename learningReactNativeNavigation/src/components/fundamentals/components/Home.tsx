@@ -9,7 +9,7 @@ import {
   ScrollView,
   StatusBar,
 } from 'react-native';
-import {Separator} from './shared/Separator';
+import {Separator} from '../../shared/Separator';
 
 export const Home = ({navigation}: any) => {
   const isDarkMode = useColorScheme() === 'dark';
