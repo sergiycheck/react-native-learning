@@ -2,7 +2,6 @@ import React from 'react';
 import {useColorScheme} from 'react-native';
 import {routes} from '../routes';
 import {
-  StyleSheet,
   Button,
   View,
   SafeAreaView,
@@ -10,6 +9,7 @@ import {
   ScrollView,
   StatusBar,
 } from 'react-native';
+import {Separator} from './shared/Separator';
 
 export const Home = ({navigation}: any) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -60,18 +60,14 @@ export const Home = ({navigation}: any) => {
             title="home with innerTabs"
             onPress={() => navigation.navigate(routes.HomeWithInnerTabs)}
           />
+          <Separator />
+
+          <Button
+            title="home with nested tabs and drawer"
+            onPress={() => navigation.navigate(routes.AppWithNestedDrawler)}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
-
-const Separator = () => <View style={styles.separator} />;
-
-const styles = StyleSheet.create({
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: '#737373',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-});

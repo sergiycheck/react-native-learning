@@ -4,4 +4,5 @@ export const routes = {
   HomeWithInnerTabs: 'HomeWithInnerTabs',
   other: 'other',
   profile: 'profile',
+  AppWithNestedDrawler: 'AppWithNestedDrawler',
 };
