@@ -5,12 +5,9 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 GoogleSignin.configure({
   webClientId:
-    '644370689146-k51kh33399n14sq1js8f65la13deu57b.apps.googleusercontent.com',
+    '198197638482-rb4fb7v1tfs6puhb9m8b7kjljtjg99ki.apps.googleusercontent.com',
 });
-
 async function onGoogleButtonPress() {
-  // eslint-disable-next-line no-debugger
-  debugger;
   // Check if your device supports Google Play
   await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
 
@@ -30,7 +27,9 @@ export function GoogleSignIn() {
       title="Google Sign-In"
       onPress={() =>
         onGoogleButtonPress()
-          .then(() => console.log('Signed in with Google!'))
+          .then(data =>
+            console.log('Signed in with Google!', JSON.stringify(data)),
+          )
           .catch(err => {
             console.error(err);
           })
