@@ -175,8 +175,22 @@ export default function App() {
             // User is signed in
             <Stack.Screen name="Home" component={HomeScreen} />
           )}
+
+          <Stack.Screen
+            navigationKey={state.userToken != null ? 'user' : 'guest'}
+            name="Help"
+            component={HelpScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>
+  );
+}
+
+function HelpScreen() {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>HelpScreen.</Text>
+    </View>
   );
 }
