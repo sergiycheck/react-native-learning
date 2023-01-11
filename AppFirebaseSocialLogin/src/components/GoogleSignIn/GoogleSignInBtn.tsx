@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from 'react-native';
-import auth from '@react-native-firebase/auth';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 GoogleSignin.configure({
@@ -20,16 +20,20 @@ async function onGoogleButtonPress() {
   // Sign-in the user with the credential
   return auth().signInWithCredential(googleCredential);
 }
-
-export function GoogleSignIn() {
+type GoogleSignInProps = {
+  onSingIn?: (signInFireBaseGoogle: FirebaseAuthTypes.UserCredential) => void;
+};
+export function GoogleSignIn({onSingIn}: GoogleSignInProps) {
   return (
     <Button
       title="Google Sign-In"
       onPress={() =>
         onGoogleButtonPress()
-          .then(data =>
-            console.log('Signed in with Google!', JSON.stringify(data)),
-          )
+          .then(data => {
+            if (onSingIn) {
+              onSingIn(data);
+            }
+          })
           .catch(err => {
             console.error(err);
           })
