@@ -1,5 +1,6 @@
 import React from 'react';
-import {DrawerNavigationMinimal} from './src/components/guides/drawerNavigation/drawerNavigationMinimal';
+// import {DrawerNavigationMinimal} from './src/components/guides/drawerNavigation/drawerNavigationMinimal';
+import {SupportingSaveArea1} from './src/components/guides/supporting_save_areas/SaveArea1';
 
 // import AppCustomizedAppearenceBottomTabs from './src/components/guides/tabNavigation/CustomizedAppearence';
 // import App_StackForEachTab from './src/components/guides/tabNavigation/StackForEachTab';
@@ -9,7 +10,7 @@ import {DrawerNavigationMinimal} from './src/components/guides/drawerNavigation/
 // import AppWithGlobalTabAndNestedStackNavigation from './src/components/fundamentals/nestingNavigators/TabWithNestedStackNavigation';
 
 const App = () => {
-  return <DrawerNavigationMinimal />;
+  return <SupportingSaveArea1 />;
 };
 
 export default App;
