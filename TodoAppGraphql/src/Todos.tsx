@@ -5,25 +5,11 @@ import {
   FlatList,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {TextCenter} from './shared-components';
 import {IPaginatedType, ResponseTodo} from './types';
-
-const todosData = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-];
 
 const TODOS_QUERY = gql`
   query TodosPaginated(
@@ -97,7 +83,31 @@ export const Todos = () => {
       <TextCenter>Todos list</TextCenter>
       <FlatList
         data={edges}
-        renderItem={({item}) => <TodoItem title={item.node.name} />}
+        renderItem={({item, index}) => {
+          const renderedTodoItem = <TodoItem title={item.node.name} />;
+
+          return index < edges.length - 1 ? (
+            renderedTodoItem
+          ) : (
+            <View>
+              {renderedTodoItem}
+              <TouchableOpacity
+                style={todoStyles.touchableFetchMore}
+                disabled={!queryCursorBasedPaginated.pageInfo.hasNextPage}
+                onPress={() => {
+                  fetchMore({
+                    variables: {
+                      limit: 3,
+                      nextPageCursor:
+                        queryCursorBasedPaginated.pageInfo.nextPageCursor,
+                    },
+                  });
+                }}>
+                <Text>Load more</Text>
+              </TouchableOpacity>
+            </View>
+          );
+        }}
         keyExtractor={item => item.node.id}
       />
     </View>
@@ -115,11 +125,22 @@ export const todoStyles = StyleSheet.create({
     marginHorizontal: 16,
   },
   item: {
-    padding: 10,
+    padding: 30,
     borderBottomWidth: 1,
     borderBottomColor: 'black',
-    backgroundColor: '#f9c2ff',
+    backgroundColor:
+      'linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147))',
     marginVertical: 8,
     color: '#FFF',
+  },
+
+  touchableFetchMore: {
+    marginTop: 16,
+    marginBottom: 26,
+    padding: 16,
+    textAlign: 'center',
+    borderRadius: 20,
+    backgroundColor:
+      'linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147))',
   },
 });

@@ -3,7 +3,6 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
 } from 'react-native';
 
@@ -11,7 +10,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 import {Todos} from './src/Todos';
-import {IPaginatedType, ResponseTodo} from './src/types';
+import {IEdgeType, IPaginatedType, ResponseTodo} from './src/types';
 import {TextCenter} from './src/shared-components';
 
 const client = new ApolloClient({
@@ -40,7 +39,10 @@ const client = new ApolloClient({
               for (let i = 0; i < incoming.edges.length; ++i) {
                 merged[offset + i] = incoming.edges[i];
               }
-              return merged;
+              return {
+                edges: merged,
+                pageInfo: incoming.pageInfo,
+              };
             },
           },
         },
@@ -49,7 +51,11 @@ const client = new ApolloClient({
   }),
 });
 
-function offsetFromCursor(items: any[], cursor: string, readField: Function) {
+function offsetFromCursor(
+  items: IEdgeType<ResponseTodo>[],
+  cursor: string,
+  readField: Function,
+) {
   // Search from the back of the list because the cursor we're
   // looking for is typically the ID of the last item.
 
@@ -62,7 +68,7 @@ function offsetFromCursor(items: any[], cursor: string, readField: Function) {
     // a good idea to use readField when you're not sure what
     // kind of elements you're dealing with.
 
-    if (readField('id', item) === cursor) {
+    if (readField('cursor', item) === cursor) {
       // Add one because the cursor identifies the item just
       // before the first item in the page we care about.
       return i + 1;

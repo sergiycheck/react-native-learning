@@ -10,7 +10,7 @@ export type ResponseTodo = Todo & {
   updatedAt: string;
 };
 
-interface IEdgeType<T> {
+export interface IEdgeType<T> {
   cursor: string;
   node: T;
 }
