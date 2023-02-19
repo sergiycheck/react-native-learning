@@ -53,8 +53,6 @@ export const Todos = () => {
     {
       variables: {
         limit: 3,
-        previousPageCursor: null,
-        nextPageCursor: null,
       },
     },
   );
@@ -77,6 +75,7 @@ export const Todos = () => {
 
   const {queryCursorBasedPaginated} = data;
   const {edges} = queryCursorBasedPaginated;
+  const {pageInfo} = queryCursorBasedPaginated;
 
   return (
     <View style={todoStyles.todoContainer}>
@@ -93,13 +92,13 @@ export const Todos = () => {
               {renderedTodoItem}
               <TouchableOpacity
                 style={todoStyles.touchableFetchMore}
-                disabled={!queryCursorBasedPaginated.pageInfo.hasNextPage}
+                disabled={!pageInfo.hasNextPage}
                 onPress={() => {
+                  const {nextPageCursor} = pageInfo;
                   fetchMore({
                     variables: {
                       limit: 3,
-                      nextPageCursor:
-                        queryCursorBasedPaginated.pageInfo.nextPageCursor,
+                      nextPageCursor,
                     },
                   });
                 }}>

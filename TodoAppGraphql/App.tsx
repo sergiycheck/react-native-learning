@@ -27,8 +27,10 @@ const client = new ApolloClient({
             merge(
               existing: IPaginatedType<ResponseTodo> | undefined,
               incoming: IPaginatedType<ResponseTodo>,
-              {args: {nextPageCursor}, readField},
+              {args, readField},
             ) {
+              const {nextPageCursor} = args;
+
               const merged = existing ? existing.edges.slice(0) : [];
               let offset = offsetFromCursor(merged, nextPageCursor, readField);
               // If we couldn't find the cursor, default to appending to
@@ -44,6 +46,11 @@ const client = new ApolloClient({
                 pageInfo: incoming.pageInfo,
               };
             },
+
+            // If you always want to return the whole list, you can omit
+            // this read function.
+            // weird somehow nextPageCursor is undefined
+            // dispite the fact that we are setting it in fetchMore
           },
         },
       },
