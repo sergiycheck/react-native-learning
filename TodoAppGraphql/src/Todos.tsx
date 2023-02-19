@@ -12,7 +12,7 @@ import {TextCenter} from './shared-components';
 import {IPaginatedType, ResponseTodo} from './types';
 
 const TODOS_QUERY = gql`
-  query TodosPaginated(
+  query QueryCursorBasedPaginated(
     $limit: Int!
     $previousPageCursor: String
     $nextPageCursor: String
@@ -22,12 +22,6 @@ const TODOS_QUERY = gql`
       previousPageCursor: $previousPageCursor
       nextPageCursor: $nextPageCursor
     ) {
-      pageInfo {
-        previousPageCursor
-        nextPageCursor
-        hasPrevPage
-        hasNextPage
-      }
       edges {
         node {
           id
@@ -38,6 +32,12 @@ const TODOS_QUERY = gql`
           updatedAt
         }
         cursor
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
       }
     }
   }
@@ -80,6 +80,19 @@ export const Todos = () => {
   return (
     <View style={todoStyles.todoContainer}>
       <TextCenter>Todos list</TextCenter>
+      <TouchableOpacity
+        style={todoStyles.touchableFetchMore}
+        disabled={!pageInfo.hasPreviousPage}
+        onPress={() => {
+          fetchMore({
+            variables: {
+              limit: 3,
+              previousPageCursor: pageInfo.startCursor,
+            },
+          });
+        }}>
+        <Text>Load back</Text>
+      </TouchableOpacity>
       <FlatList
         data={edges}
         renderItem={({item, index}) => {
@@ -94,11 +107,11 @@ export const Todos = () => {
                 style={todoStyles.touchableFetchMore}
                 disabled={!pageInfo.hasNextPage}
                 onPress={() => {
-                  const {nextPageCursor} = pageInfo;
+                  const {endCursor} = pageInfo;
                   fetchMore({
                     variables: {
                       limit: 3,
-                      nextPageCursor,
+                      nextPageCursor: endCursor,
                     },
                   });
                 }}>
