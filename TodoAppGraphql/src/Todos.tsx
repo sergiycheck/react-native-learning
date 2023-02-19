@@ -80,19 +80,7 @@ export const Todos = () => {
   return (
     <View style={todoStyles.todoContainer}>
       <TextCenter>Todos list</TextCenter>
-      <TouchableOpacity
-        style={todoStyles.touchableFetchMore}
-        disabled={!pageInfo.hasPreviousPage}
-        onPress={() => {
-          fetchMore({
-            variables: {
-              limit: 3,
-              previousPageCursor: pageInfo.startCursor,
-            },
-          });
-        }}>
-        <Text>Load back</Text>
-      </TouchableOpacity>
+
       <FlatList
         data={edges}
         renderItem={({item, index}) => {
