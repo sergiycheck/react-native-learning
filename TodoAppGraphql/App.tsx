@@ -98,7 +98,6 @@ const RootComponent = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <TextCenter>Todos title</TextCenter>
       <Todos />
     </SafeAreaView>
   );

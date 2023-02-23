@@ -71,15 +71,13 @@ export const Todos = () => {
       </View>
     );
 
-  console.log('data', data);
-
   const {queryCursorBasedPaginated} = data;
   const {edges} = queryCursorBasedPaginated;
   const {pageInfo} = queryCursorBasedPaginated;
 
   return (
     <View style={todoStyles.todoContainer}>
-      <TextCenter>Todos list</TextCenter>
+      <TextCenter style={todoStyles.todoTitle}>Todos list</TextCenter>
 
       <FlatList
         data={edges}
@@ -122,7 +120,11 @@ const TodoItem = ({title}: ItemProps) => (
 
 export const todoStyles = StyleSheet.create({
   todoContainer: {
+    marginTop: 150,
     marginHorizontal: 16,
+  },
+  todoTitle: {
+    fontSize: 42,
   },
   item: {
     padding: 30,
@@ -136,7 +138,7 @@ export const todoStyles = StyleSheet.create({
 
   touchableFetchMore: {
     marginTop: 16,
-    marginBottom: 26,
+    marginBottom: 40,
     padding: 16,
     textAlign: 'center',
     borderRadius: 20,

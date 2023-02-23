@@ -53,8 +53,11 @@ const defaultStyles = StyleSheet.create({
   },
 });
 
-export const TextCenter = ({children}: PropsWithChildren) => {
-  return <Text style={customStyles.textCenter}>{children}</Text>;
+export const TextCenter = ({
+  children,
+  style,
+}: PropsWithChildren & {style?: any}) => {
+  return <Text style={[customStyles.textCenter, style]}>{children}</Text>;
 };
 
 export const customStyles = StyleSheet.create({
