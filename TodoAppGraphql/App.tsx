@@ -137,6 +137,7 @@ const RootComponent = () => {
       />
       <Tab.Navigator
         screenOptions={({route}) => ({
+          headerShown: route.name === 'Home' ? false : true,
           tabBarIcon: ({focused, color, size}) => {
             let iconName = '';
 
@@ -156,7 +157,11 @@ const RootComponent = () => {
           },
         })}>
         <Tab.Screen name="Home" component={TodosContainer} />
-        <Tab.Screen name="AddTodo" component={AddTodoScreen} />
+        <Tab.Screen
+          name="AddTodo"
+          component={AddTodoScreen}
+          options={{title: 'Add new todo'}}
+        />
       </Tab.Navigator>
     </SafeAreaProvider>
   );

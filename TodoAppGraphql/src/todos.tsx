@@ -23,8 +23,12 @@ export const TodosContainer = () => {
   return (
     <Stack.Navigator
       initialRouteName="todos"
-      screenOptions={{headerShown: false}}>
-      <Stack.Screen name="todos" component={Todos} />
+      screenOptions={{headerShown: true}}>
+      <Stack.Screen
+        name="todos"
+        component={Todos}
+        options={() => ({title: 'Todos'})}
+      />
       <Stack.Screen
         name="todo_edit"
         component={EditTodo}
