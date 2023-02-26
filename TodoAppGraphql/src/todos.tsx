@@ -126,6 +126,7 @@ const TodoItem = ({item, navigation}: ItemProps) => {
           });
         }}>
         <Text style={todoNameStyles}>{item.name}</Text>
+        <Text style={{fontWeight: 'bold'}}>#{item.tag}</Text>
       </TouchableOpacity>
 
       {!loading ? (
