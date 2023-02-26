@@ -52,7 +52,7 @@ export const Todos = ({
     },
   );
 
-  if (loading || !data)
+  if (loading)
     return (
       <View>
         <ActivityIndicator animating={true} />
@@ -65,6 +65,14 @@ export const Todos = ({
         <TextCenter>Failed to load data!</TextCenter>
       </View>
     );
+
+  if (!data) {
+    return (
+      <View>
+        <TextCenter>No data was found.</TextCenter>
+      </View>
+    );
+  }
 
   const {queryCursorBasedPaginated} = data;
   const {edges} = queryCursorBasedPaginated;
