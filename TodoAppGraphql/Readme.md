@@ -1,3 +1,8 @@
+If icons are not shown read this issue
+change build.gradle, add apply from node_modules
+
+[icons not appear issue](https://github.com/oblador/react-native-vector-icons/issues/661)
+
 Links
 
 1. [react-native sortable list for changing the order of todos](https://github.com/gitim/react-native-sortable-list)

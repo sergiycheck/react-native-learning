@@ -1,17 +1,18 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  useColorScheme,
-} from 'react-native';
+import {StatusBar, StyleSheet, useColorScheme} from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
-import {Todos} from './src/Todos';
 import {IEdgeType, IPaginatedType, ResponseTodo} from './src/types';
-import {TextCenter} from './src/shared-components';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Icon} from '@rneui/themed';
+
+import {TodosContainer} from './src/todos';
+import {AddTodoScreen} from './src/add-todo';
+import {TODOS_QUERY, TODOS_QUERY_TYPE} from './src/queries';
 
 const client = new ApolloClient({
   uri: 'http://10.0.2.2:3024/graphql',
@@ -29,7 +30,7 @@ const client = new ApolloClient({
               incoming: IPaginatedType<ResponseTodo>,
               {args, readField},
             ) {
-              const {nextPageCursor} = args;
+              const {nextPageCursor} = args as {nextPageCursor: string};
 
               const merged = existing ? existing.edges.slice(0) : [];
               let offset = offsetFromCursor(merged, nextPageCursor, readField);
@@ -56,6 +57,33 @@ const client = new ApolloClient({
       },
     },
   }),
+
+  resolvers: {
+    Query: {
+      todo: (_root, args: {todoId: string}, {cache}) => {
+        const {todoId} = args;
+        const {queryCursorBasedPaginated} = cache.readQuery({
+          query: TODOS_QUERY,
+        }) as TODOS_QUERY_TYPE;
+
+        const {edges} = queryCursorBasedPaginated;
+
+        const todoIndex = edges.findIndex(item => item.cursor === todoId);
+        if (todoIndex) {
+          const todoEdge = edges[todoIndex];
+          let prevCursor = todoEdge.cursor;
+          if (todoIndex > 0) {
+            prevCursor = edges[todoIndex - 1].cursor;
+          }
+
+          return {
+            todo: todoEdge.node,
+            prevCursor,
+          };
+        }
+      },
+    },
+  },
 });
 
 function offsetFromCursor(
@@ -86,28 +114,61 @@ function offsetFromCursor(
   return -1;
 }
 
+const Tab = createBottomTabNavigator();
+
 const RootComponent = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const modeStyles = {
+    backgroundColor: isDarkMode ? 'black' : 'white',
+    color: isDarkMode ? 'white' : 'black',
   };
+
+  const stylesToPass = {
+    ...appStyles.container,
+    ...modeStyles,
+  };
+
   return (
-    <SafeAreaView style={{...appStyles.container, ...backgroundStyle}}>
+    <SafeAreaProvider style={{...stylesToPass}}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+        backgroundColor={modeStyles.backgroundColor}
       />
-      <Todos />
-    </SafeAreaView>
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName = '';
+
+            switch (route.name) {
+              case 'Home':
+                iconName = focused ? 'home-filled' : 'home';
+                break;
+
+              case 'AddTodo':
+                iconName = focused ? 'add-circle' : 'add-circle-outline';
+                break;
+              default:
+                iconName = focused ? 'home-filled' : 'home';
+            }
+
+            return <Icon name={iconName} size={size} color={color} />;
+          },
+        })}>
+        <Tab.Screen name="Home" component={TodosContainer} />
+        <Tab.Screen name="AddTodo" component={AddTodoScreen} />
+      </Tab.Navigator>
+    </SafeAreaProvider>
   );
 };
 
 function App(): JSX.Element {
   return (
-    <ApolloProvider client={client}>
-      <RootComponent />
-    </ApolloProvider>
+    <NavigationContainer>
+      <ApolloProvider client={client}>
+        <RootComponent />
+      </ApolloProvider>
+    </NavigationContainer>
   );
 }
 
