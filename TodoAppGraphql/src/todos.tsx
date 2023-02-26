@@ -6,6 +6,7 @@ import {
   FlatList,
   StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -15,6 +16,7 @@ import {ResponseTodo} from './types';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {EditTodo} from './edit-todo';
 import {ButtonAction} from './shared';
+import {StyleProp} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 export const TodosContainer = () => {
@@ -110,6 +112,11 @@ const TodoItem = ({item, navigation}: ItemProps) => {
     refetchQueries: [{query: TODOS_QUERY, variables: {limit: 5}}],
   });
 
+  const todoNameStyles: StyleProp<TextStyle> = {
+    textDecorationLine: item.isDone ? 'line-through' : 'none',
+    textDecorationStyle: 'solid',
+  };
+
   return (
     <View style={todoStyles.item}>
       <TouchableOpacity
@@ -118,7 +125,7 @@ const TodoItem = ({item, navigation}: ItemProps) => {
             todoId: item.id,
           });
         }}>
-        <Text>{item.name}</Text>
+        <Text style={todoNameStyles}>{item.name}</Text>
       </TouchableOpacity>
 
       {!loading ? (

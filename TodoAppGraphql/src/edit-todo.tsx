@@ -72,7 +72,7 @@ export function EditTodo({
         setNewTag('');
         setChecked(false);
 
-        navigation.navigate('Home');
+        navigation.navigate('todos');
       })
       .catch(err => {
         console.error(err);
