@@ -7,4 +7,5 @@ export type NavigationType = NavigationProp<any, any> & {
   openDrawer: () => void;
   closeDrawer: () => void;
   getParent: (id?: string) => NavigationType;
+  push: (id: string) => void;
 };
