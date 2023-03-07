@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {PreventingGoingBack1} from './src/components/guides/11-preventing-goint-back/preventing-goint-back-1';
+import {CallFuncWithFocusEvent1} from './src/components/guides/12-call-func-on-focus/focus-event-1';
+// import {PreventingGoingBack1} from './src/components/guides/11-preventing-goint-back/preventing-goint-back-1';
 // import {CustomAndroidBack1} from './src/components/guides/10-custom-android-back/custom-android-back-1';
 
 // import {ScreenOptionsWithNestedNav2} from './src/components/guides/9-screen-options-with-nested-navigators/screen-options-neste-navs-2';
@@ -29,7 +30,7 @@ import {PreventingGoingBack1} from './src/components/guides/11-preventing-goint-
 // import AppWithGlobalTabAndNestedStackNavigation from './src/components/fundamentals/nestingNavigators/TabWithNestedStackNavigation';
 
 const App = () => {
-  return <PreventingGoingBack1 />;
+  return <CallFuncWithFocusEvent1 />;
 };
 
 export default App;
