@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
-import {NavigationContainer, NavigationProp} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 
 import {
   SafeAreaProvider,
@@ -12,10 +12,9 @@ import {FocusAwareStatusBar} from './focus-aware-status-bar';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // import {createDrawerNavigator} from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {NavigationType} from '../../shared/types';
 // browse all
 //https://oblador.github.io/react-native-vector-icons/
-
-type NavigationType = NavigationProp<any, any> & {toggleDrawer: () => void};
 
 function Screen1({navigation}: {navigation: NavigationType}) {
   const insets = useSafeAreaInsets();
