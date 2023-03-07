@@ -1,6 +1,7 @@
 import React from 'react';
+import {HidingTabBarInScreens} from './src/components/guides/5-hiding-tabbar-in-screens/hiding-tabbar-in-screent';
 // import {DrawerNavigationMinimal} from './src/components/guides/drawerNavigation/drawerNavigationMinimal';
-import {SupportingSaveArea1} from './src/components/guides/supporting_save_areas/SaveArea1';
+// import {SupportingSaveArea1} from './src/components/guides/4-supporting_save_areas/SaveArea1';
 
 // import AppCustomizedAppearenceBottomTabs from './src/components/guides/tabNavigation/CustomizedAppearence';
 // import App_StackForEachTab from './src/components/guides/tabNavigation/StackForEachTab';
@@ -10,7 +11,7 @@ import {SupportingSaveArea1} from './src/components/guides/supporting_save_areas
 // import AppWithGlobalTabAndNestedStackNavigation from './src/components/fundamentals/nestingNavigators/TabWithNestedStackNavigation';
 
 const App = () => {
-  return <SupportingSaveArea1 />;
+  return <HidingTabBarInScreens />;
 };
 
 export default App;
