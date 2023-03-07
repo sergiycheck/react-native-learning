@@ -1,6 +1,9 @@
 import React from 'react';
 
-import {CallFuncWithFocusEvent1} from './src/components/guides/12-call-func-on-focus/focus-event-1';
+import {LinkingReactNative1} from './src/components/guides/15-deep-linking/linking-reac-native-1';
+// import {NavigationWithoutNavigationProp1} from './src/components/guides/14-navigation-prop/navigation-prop-1';
+// import {ConnectNavigationProp} from './src/components/guides/13-connect-navigation-prop/connect-navigation-prop';
+// import {CallFuncWithFocusEvent1} from './src/components/guides/12-call-func-on-focus/focus-event-1';
 // import {PreventingGoingBack1} from './src/components/guides/11-preventing-goint-back/preventing-goint-back-1';
 // import {CustomAndroidBack1} from './src/components/guides/10-custom-android-back/custom-android-back-1';
 
@@ -30,7 +33,7 @@ import {CallFuncWithFocusEvent1} from './src/components/guides/12-call-func-on-f
 // import AppWithGlobalTabAndNestedStackNavigation from './src/components/fundamentals/nestingNavigators/TabWithNestedStackNavigation';
 
 const App = () => {
-  return <CallFuncWithFocusEvent1 />;
+  return <LinkingReactNative1 />;
 };
 
 export default App;
