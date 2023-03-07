@@ -3,17 +3,10 @@ import {Text, View, Button} from 'react-native';
 import {NavigationContainer, NavigationProp} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {EmptyScreen} from '../../shared/empty-screen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
-
-function EmptyScreen({route}: {route: {name: string}}) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>{route.name}</Text>
-    </View>
-  );
-}
 
 function Home({navigation}: {navigation: NavigationProp<any, any>}) {
   return (
