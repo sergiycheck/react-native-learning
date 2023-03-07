@@ -1,8 +1,9 @@
-// for @react-navigation/stack
-import 'react-native-gesture-handler';
-
 import React from 'react';
-import {OpeningAModal1} from './src/components/guides/7-opening-a-modal/opening-a-modal-1';
+import {ModalReactNative1} from './src/components/guides/7-opening-a-modal/react-native/modal-1';
+
+// for @react-navigation/stack
+// import 'react-native-gesture-handler';
+// import {OpeningAModal1} from './src/components/guides/7-opening-a-modal/react-navigation/opening-a-modal-1';
 
 // import {DiffStatusBar2} from './src/components/guides/6-different-status-bar/diff-status-bar-2';
 // import {DiffStatusBar1} from './src/components/guides/6-different-status-bar/diff-statu-bar-1';
@@ -18,7 +19,7 @@ import {OpeningAModal1} from './src/components/guides/7-opening-a-modal/opening-
 // import AppWithGlobalTabAndNestedStackNavigation from './src/components/fundamentals/nestingNavigators/TabWithNestedStackNavigation';
 
 const App = () => {
-  return <OpeningAModal1 />;
+  return <ModalReactNative1 />;
 };
 
 export default App;
