@@ -1,5 +1,7 @@
 import React from 'react';
-import {HidingTabBarInScreens} from './src/components/guides/5-hiding-tabbar-in-screens/hiding-tabbar-in-screent';
+import {DiffStatusBar2} from './src/components/guides/6-different-status-bar/diff-status-bar-2';
+// import {DiffStatusBar1} from './src/components/guides/6-different-status-bar/diff-statu-bar-1';
+// import {HidingTabBarInScreens} from './src/components/guides/5-hiding-tabbar-in-screens/hiding-tabbar-in-screent';
 // import {DrawerNavigationMinimal} from './src/components/guides/drawerNavigation/drawerNavigationMinimal';
 // import {SupportingSaveArea1} from './src/components/guides/4-supporting_save_areas/SaveArea1';
 
@@ -11,7 +13,7 @@ import {HidingTabBarInScreens} from './src/components/guides/5-hiding-tabbar-in-
 // import AppWithGlobalTabAndNestedStackNavigation from './src/components/fundamentals/nestingNavigators/TabWithNestedStackNavigation';
 
 const App = () => {
-  return <HidingTabBarInScreens />;
+  return <DiffStatusBar2 />;
 };
 
 export default App;
