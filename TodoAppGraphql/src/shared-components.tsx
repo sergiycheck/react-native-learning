@@ -1,12 +1,16 @@
 import React, {PropsWithChildren} from 'react';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {useColorScheme, ScrollView, View, StyleSheet, Text} from 'react-native';
+
+const Colors = {
+  black: 'black',
+  white: 'white',
+};
 
 export const ScrollViewWithDarkMode = ({children}: PropsWithChildren) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? Colors.black : Colors.white,
   };
 
   return (
@@ -31,7 +35,7 @@ export function Section({children}: PropsWithChildren): JSX.Element {
         style={[
           defaultStyles.sectionDescription,
           {
-            color: isDarkMode ? Colors.light : Colors.dark,
+            color: isDarkMode ? Colors.black : Colors.white,
           },
         ]}>
         {children}
@@ -53,8 +57,11 @@ const defaultStyles = StyleSheet.create({
   },
 });
 
-export const TextCenter = ({children}: PropsWithChildren) => {
-  return <Text style={customStyles.textCenter}>{children}</Text>;
+export const TextCenter = ({
+  children,
+  style,
+}: PropsWithChildren & {style?: any}) => {
+  return <Text style={[customStyles.textCenter, style]}>{children}</Text>;
 };
 
 export const customStyles = StyleSheet.create({

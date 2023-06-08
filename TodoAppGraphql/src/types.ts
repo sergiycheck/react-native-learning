@@ -18,9 +18,9 @@ export interface IEdgeType<T> {
 export interface IPaginatedType<T> {
   edges: IEdgeType<T>[];
   pageInfo: {
-    previousPageCursor: string;
-    nextPageCursor: string;
-    hasPrevPage: boolean;
+    startCursor: string;
+    endCursor: string;
+    hasPreviousPage: boolean;
     hasNextPage: boolean;
   };
 }

@@ -63,6 +63,8 @@ function DisplayCapsules() {
       variables: { offset: 0, limit: 5 },
     });
 
+  console.log('data', data);
+
   if (loading || !data)
     return (
       <View style={appStyles.center}>

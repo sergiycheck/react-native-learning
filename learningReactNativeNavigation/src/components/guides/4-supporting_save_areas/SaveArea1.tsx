@@ -40,7 +40,7 @@ function Profile({navigation}: {navigation: NavigationProp<any, any>}) {
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-        <Text>Profile top text</Text>
+        <Text>Profile top text v1</Text>
         <Text>This is bottom text.</Text>
         <Button
           title="Analitics"
